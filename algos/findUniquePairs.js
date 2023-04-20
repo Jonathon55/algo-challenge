@@ -7,6 +7,7 @@ const {findPairs} = require('./findPairs');
  *  write a program that outputs unique pairs only once 
  * (removes the duplicates but includes the reversed ordered pairs)
  * @returns array of unique pairs
+ * Time Complexity o(n) - one loop
  */
 
 const findUniquePairs = (collection) => {

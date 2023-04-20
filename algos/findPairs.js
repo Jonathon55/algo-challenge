@@ -5,10 +5,13 @@
  * * Write a program a program that allows for an integer to 
  * be passed in and will output all the pairs that sum up to target sum
  * @returns array of all pairs
+ * Time Complexity closer to Linear, single loop through array, 
+ * Using Cache[Compliment] for constant look up
+ * Worst Case Scenario is for if all elements have same value
  */
  const findPairs = (arr, sum) => {
     let pairs = [];
-    let obj = {};
+    let cache = {};
     
     if(!arr.length) return pairs;
 
@@ -17,8 +20,8 @@
       let complement = sum - arr[i];
 
      //Check if the object contains the complement as a key
-      if (obj.hasOwnProperty(complement)) {
-        obj[complement].forEach(index => {
+      if (cache.hasOwnProperty(complement)) {
+        cache[complement].forEach(index => {
         //Push the pair (complement, current element) into the pairs array
           pairs.push([arr[index], arr[i]]);
         //Push the reversed pair (current element, complement) into the pairs array
@@ -26,13 +29,13 @@
         });
       }
   
-      if (!obj.hasOwnProperty(arr[i])) {
-        //If the current element is not already a key in the object, 
+      if (!cache.hasOwnProperty(arr[i])) {
+        //If the current element is not already a key in the  object, 
         //add it with an empty array as its value
-        obj[arr[i]] = [];
+        cache[arr[i]] = [];
       }
       //Push the current index into the array associated with the current element
-      obj[arr[i]].push(i);
+      cache[arr[i]].push(i);
     }
   
     return pairs;

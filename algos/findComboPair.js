@@ -5,6 +5,7 @@ const { findPairs } = require('./findPairs');
  * @param {*} collection array of pairs
  * Write a program that output the same combo pair only once, removes reverse order pairs
  * @returns array of unique combo pairs
+ * Time Complexity o(n) - one loop
  */
 const findComboPairs = (collection) => {
   // Initialize an object to store unique pair keys
